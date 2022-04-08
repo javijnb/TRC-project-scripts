@@ -36,6 +36,7 @@ def main(numero_encaminamiento: int, seed: int):
             cfg_out_file_destination = move_cfg_out_file(cfg_file_path)
             blocking_probabilities_dict = parse_cfg_out_file(cfg_out_file_destination)
             highest_blocking_probability = float(get_max_probability_from_dict(blocking_probabilities_dict))
+            build_gnuplot_file(i, blocking_probabilities_dict, numero_encaminamiento)
 
             # Recalcular probabilidad de bloqueo para la siguiente iteracion
             next_tolerance = ((1-highest_blocking_probability)/highest_blocking_probability)*0.002
@@ -142,8 +143,25 @@ def get_max_probability_from_dict(blocking_probabilities_dict:dict) -> float:
     return max(blocking_probabilities_list)
 
 
-def build_gnuplot_file():
-    print()
+def build_gnuplot_file(iteration:int, blocking_probabilities_dict:dict, numero_encaminamiento:int):
+    file_name = "data_enc"+str(numero_encaminamiento)+".plot"
+    file_path = gnuplot_files_path + file_name
+    if iteration == 0:
+        f = open(file_path, 'w')
+    else:
+        f = open(file_path, 'a')
+
+    f.write(str(A[iteration])+" ")
+
+    for traffic in blocking_probabilities_dict:
+        Ac_max = A[iteration]*(1-float(blocking_probabilities_dict[traffic]["Bmin"]))
+        Ac_central = A[iteration]*(1-float(blocking_probabilities_dict[traffic]["Bcentral"]))
+        Ac_min = A[iteration]*(1-float(blocking_probabilities_dict[traffic]["Bmax"]))
+        traficos_cursados = [str(Ac_min), str(Ac_central), str(Ac_max)]
+        f.write(" ".join(traficos_cursados)+" "
+        )
+
+    f.write("\n")
 
 
 if __name__ == "__main__":
