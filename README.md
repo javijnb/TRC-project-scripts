@@ -18,3 +18,11 @@ Ambos parámetros son obligatorios
 - output_cfg: almecanará los ficheros de salida devueltos por el simulador a partir de los ficheros de entrada del directorio anterior
 - gnuplot_cfg: almacenará los ficheros con los datos a graficar por gnuplot
 En caso de ordenar simular una misma configuración, los ficheros correspondientes serán sobreescritos
+
+## Otros
+- clean_cfg_files.sh: script shell para eliminar todos los ficheros que haya en las carpetas mencionadas en el apartado anterior. Usar con cuidado, los ficheros serán eliminados permanentemente.
+Funcionamiento:
+~~~
+chmod +x clean_cfg_files.sh
+./clean_cfg_files.sh
+~~~
