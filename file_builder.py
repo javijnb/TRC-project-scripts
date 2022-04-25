@@ -1,6 +1,3 @@
-from array import array
-
-
 input_files_path = "./input_cfg/"
 gnuplot_files_path = "./gnuplot_files/"
 
@@ -89,13 +86,18 @@ class FileBuilder():
 
         return absolute_file_path
 
-    def build_cfg_file_encaminamiento_3(iteration:int, current_lambda:float, S:int) -> str:
+    def build_cfg_file_encaminamiento_3(iteration:int, current_lambda:float, S:int, backup:bool) -> str:
 
         """
-        Creates a new file (or overwrites the existing one) for the specified iteration to store the configuration data for the third routing
+        Creates a new file (or overwrites the existing one) for the specified iteration to store the configuration data for the third routing. 
+        Backup parameter if set true, enables the posibility to call SimRedMMkk with backup flag (-n)
         """
 
-        file_name = "enc3_r"+str(iteration)+".cfg"
+        if backup:
+            file_name = "enc3_reserva_r"+str(iteration)+".cfg"
+        else:
+            file_name = "enc3_r"+str(iteration)+".cfg"
+
         absolute_file_path = input_files_path + file_name
         f = open(absolute_file_path, "w")
 
@@ -143,15 +145,21 @@ class FileBuilder():
 
         return absolute_file_path
 
-    def build_gnuplot_file(iteration:int, blocking_probabilities_dict:dict, numero_encaminamiento:int, A):
+    def build_gnuplot_file(iteration:int, blocking_probabilities_dict:dict, numero_encaminamiento:int, A, backup:bool):
 
         """
         Creates a new file (or overwrites the existing one) for the specified iteration to store the configuration data for the second routing
         """
 
-        file_name_trafA = "data_enc"+str(numero_encaminamiento)+"_trafA.plot"
-        file_name_trafB = "data_enc"+str(numero_encaminamiento)+"_trafB.plot"
-        file_name_overall = "data_enc"+str(numero_encaminamiento)+".plot"
+        if backup and (numero_encaminamiento == 4):
+            file_name_trafA = "data_enc3_backup_trafA.plot"
+            file_name_trafB = "data_enc3_backup_trafB.plot"
+            file_name_overall = "data_enc3_backup.plot"
+
+        else:
+            file_name_trafA = "data_enc"+str(numero_encaminamiento)+"_trafA.plot"
+            file_name_trafB = "data_enc"+str(numero_encaminamiento)+"_trafB.plot"
+            file_name_overall = "data_enc"+str(numero_encaminamiento)+".plot"
 
         file_path_trafA = gnuplot_files_path + file_name_trafA
         file_path_trafB = gnuplot_files_path + file_name_trafB

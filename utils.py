@@ -44,15 +44,22 @@ class Utils():
         }
         return blocking_probabilities_dict
 
-    def execute_sim_red(config_file_path:str, seed:int, tolerance:float, q:float):
-        command = "./SimRedMMkk -s "+str(seed)+" -q "+str(q)+" -t "+str(tolerance)+" -a "+config_file_path
+    def execute_sim_red(config_file_path:str, seed:int, tolerance:float, q:float, backup:bool):
+        if backup:
+            command = "./SimRedMMkk -s "+str(seed)+" -q "+str(q)+" -t "+str(tolerance)+" -n 2 -a "+config_file_path
+        else:
+            command = "./SimRedMMkk -s "+str(seed)+" -q "+str(q)+" -t "+str(tolerance)+" -a "+config_file_path
         os.system(command)
     
 
-    def move_cfg_out_file(config_file_path:str) -> str:
+    def move_cfg_out_file(config_file_path:str, backup:bool) -> str:
         # config_file_path = ./input_cfg/encX_rY.cfg
 
-        source = config_file_path + ".out"
+        if backup:
+            source = config_file_path + ".2k.out"
+        else:
+            source = config_file_path + ".out"
+
         directories = source.split("/")
         directories[1] = output_files_path
         destination = "/".join(directories)
