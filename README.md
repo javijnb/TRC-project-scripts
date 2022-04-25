@@ -8,7 +8,7 @@ Este repositorio contiene todas las herramientas para automatizar las tareas de 
 Para ejecutarlo:
 
 ~~~
-python3 get_blocking_prob [numero de encaminamiento] [semilla del simulador]
+python3 get_blocking_prob.py [numero de encaminamiento] [semilla del simulador]
 ~~~
 
 Ambos parámetros son obligatorios

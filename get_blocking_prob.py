@@ -1,5 +1,3 @@
-from multiprocessing.connection import wait
-from time import sleep
 import typer
 import os
 import shutil
@@ -144,24 +142,35 @@ def get_max_probability_from_dict(blocking_probabilities_dict:dict) -> float:
 
 
 def build_gnuplot_file(iteration:int, blocking_probabilities_dict:dict, numero_encaminamiento:int):
-    file_name = "data_enc"+str(numero_encaminamiento)+".plot"
-    file_path = gnuplot_files_path + file_name
+    file_name_trafA = "data_enc"+str(numero_encaminamiento)+"_trafA.plot"
+    file_name_trafB = "data_enc"+str(numero_encaminamiento)+"_trafB.plot"
+
+    file_path_trafA = gnuplot_files_path + file_name_trafA
+    file_path_trafB = gnuplot_files_path + file_name_trafB
+
     if iteration == 0:
-        f = open(file_path, 'w')
+        f_A = open(file_path_trafA, 'w')
+        f_B = open(file_path_trafB, 'w')
+        f_A.write("# Trafico A\n")
+        f_B.write("# Trafico B\n")
     else:
-        f = open(file_path, 'a')
-
-    f.write(str(A[iteration])+" ")
-
+        f_A = open(file_path_trafA, 'a')
+        f_B = open(file_path_trafB, 'a')
+    
     for traffic in blocking_probabilities_dict:
+
+        if traffic == "trafico_a":
+            f = f_A
+        elif traffic == "trafico_b":
+            f = f_B
+        
+        f.write(str(A[iteration])+" ")
         Ac_max = A[iteration]*(1-float(blocking_probabilities_dict[traffic]["Bmin"]))
         Ac_central = A[iteration]*(1-float(blocking_probabilities_dict[traffic]["Bcentral"]))
         Ac_min = A[iteration]*(1-float(blocking_probabilities_dict[traffic]["Bmax"]))
-        traficos_cursados = [str(Ac_min), str(Ac_central), str(Ac_max)]
-        f.write(" ".join(traficos_cursados)+" "
-        )
-
-    f.write("\n")
+        traficos_cursados = [str(Ac_central), str(Ac_min), str(Ac_max)]
+        f.write(" ".join(traficos_cursados)+" ")
+        f.write("\n")
 
 
 if __name__ == "__main__":
