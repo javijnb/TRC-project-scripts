@@ -144,18 +144,28 @@ def get_max_probability_from_dict(blocking_probabilities_dict:dict) -> float:
 def build_gnuplot_file(iteration:int, blocking_probabilities_dict:dict, numero_encaminamiento:int):
     file_name_trafA = "data_enc"+str(numero_encaminamiento)+"_trafA.plot"
     file_name_trafB = "data_enc"+str(numero_encaminamiento)+"_trafB.plot"
+    file_name_overall = "data_enc"+str(numero_encaminamiento)+".plot"
 
     file_path_trafA = gnuplot_files_path + file_name_trafA
     file_path_trafB = gnuplot_files_path + file_name_trafB
+    file_path_overall = gnuplot_files_path + file_name_overall
 
     if iteration == 0:
         f_A = open(file_path_trafA, 'w')
         f_B = open(file_path_trafB, 'w')
+        f_overall = open(file_path_overall, 'w')
+
         f_A.write("# Trafico A\n")
         f_B.write("# Trafico B\n")
+        f_overall.write('# Trafico total\n')
     else:
         f_A = open(file_path_trafA, 'a')
         f_B = open(file_path_trafB, 'a')
+        f_overall = open(file_path_overall, 'a')
+
+    Ac_max_overall = 0
+    Ac_central_overall = 0
+    Ac_min_overall = 0
     
     for traffic in blocking_probabilities_dict:
 
@@ -164,13 +174,22 @@ def build_gnuplot_file(iteration:int, blocking_probabilities_dict:dict, numero_e
         elif traffic == "trafico_b":
             f = f_B
         
+        # Escribir los datos del tráfico particular
         f.write(str(A[iteration])+" ")
         Ac_max = A[iteration]*(1-float(blocking_probabilities_dict[traffic]["Bmin"]))
         Ac_central = A[iteration]*(1-float(blocking_probabilities_dict[traffic]["Bcentral"]))
         Ac_min = A[iteration]*(1-float(blocking_probabilities_dict[traffic]["Bmax"]))
         traficos_cursados = [str(Ac_central), str(Ac_min), str(Ac_max)]
-        f.write(" ".join(traficos_cursados)+" ")
-        f.write("\n")
+        f.write(" ".join(traficos_cursados)+" \n")
+
+        # Guardar los datos totales de los tráficos en un único fichero (overall)
+        Ac_max_overall += Ac_max
+        Ac_central_overall += Ac_central
+        Ac_min_overall += Ac_min
+    
+    trafico_total_ofrecido = 2*(float(A[iteration]))
+    traficos_totales = [str(trafico_total_ofrecido), str(Ac_central_overall), str(Ac_min_overall), str(Ac_max_overall)]
+    f_overall.write(" ".join(traficos_totales)+" \n")
 
 
 if __name__ == "__main__":
