@@ -48,7 +48,7 @@ class FileBuilder():
     def build_cfg_file_encaminamiento_2(iteration:int, current_lambda:float, S:int) -> str:
 
         """
-        Creates a new file (or overwrites the existing one) for the specified iteration to store the configuration data for the first routing
+        Creates a new file (or overwrites the existing one) for the specified iteration to store the configuration data for the second routing
         """
 
         file_name = "enc2_r"+str(iteration)+".cfg"
@@ -76,13 +76,67 @@ class FileBuilder():
             f.write("M "+str(2*arrivals)+"\n")
             f.write("M "+str(S)+"\n")
             if i == 0:
-                f.write(str(0)+","+str(1)+" "+str(3)+","+str(2)+" b\n")
+                f.write("0,1 3,2 b\n")
             elif i == 1:
-                f.write(str(1)+","+str(2)+" "+str(0)+","+str(3)+" b\n")
+                f.write("1,2 0,3 b\n")
             elif i == 2:
-                f.write(str(2)+","+str(3)+" "+str(1)+","+str(0)+" b\n")
+                f.write("2,3 1,0 b\n")
             elif i == 3:
-                f.write(str(3)+","+str(0)+" "+str(2)+","+str(1)+" b\n")
+                f.write("3,0 2,1 b\n")
+            f.write("\n")
+
+        f.close()
+
+        return absolute_file_path
+
+    def build_cfg_file_encaminamiento_3(iteration:int, current_lambda:float, S:int) -> str:
+
+        """
+        Creates a new file (or overwrites the existing one) for the specified iteration to store the configuration data for the third routing
+        """
+
+        file_name = "enc3_r"+str(iteration)+".cfg"
+        absolute_file_path = input_files_path + file_name
+        f = open(absolute_file_path, "w")
+
+        # CABECERA
+        f.write("50 50 50 50\n")
+        f.write("8\n")
+        f.write("\n")
+
+        # TRAFICOS
+        arrivals = 1/current_lambda
+
+        # Ruta de 1 salto
+        # De no poder ser, ruta en sentido contrario
+        for i in range(4):
+            f.write("M "+str(arrivals)+"\n")
+            f.write("M "+str(S)+"\n")
+
+            if i == 0:
+                f.write("0 3,2,1 a\n")
+            elif i == 1:
+                f.write("1 0,3,2 a\n")
+            elif i == 2:
+                f.write("2 1,0,3 a\n")
+            elif i == 3:
+                f.write("3 2,1,0 a\n")
+            
+            f.write("\n")
+
+        # Ruta dextrógira de 2 saltos
+        # De no poder ser, ruta levógira de 2 saltos
+        for i in range(4):
+            f.write("M "+str(2*arrivals)+"\n")
+            f.write("M "+str(S)+"\n")
+            if i == 0:
+                f.write("0,1 3,2 b\n")
+            elif i == 1:
+                f.write("1,2 0,3 b\n")
+            elif i == 2:
+                f.write("2,3 1,0 b\n")
+            elif i == 3:
+                f.write("3,0 2,1 b\n")
             f.write("\n")
 
         f.close()
