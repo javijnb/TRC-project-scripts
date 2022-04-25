@@ -36,7 +36,7 @@ def main(numero_encaminamiento: int, seed: int):
             cfg_file_path = FileBuilder.build_cfg_file_encaminamiento_1(i, my_lambdas[i], S)
 
         elif numero_encaminamiento == 2:
-            cfg_file_path = FileBuilder.build_cfg_file_encaminamiento_1(i, my_lambdas[i], S)
+            cfg_file_path = FileBuilder.build_cfg_file_encaminamiento_2(i, my_lambdas[i], S)
 
         elif numero_encaminamiento == 3:
             cfg_file_path = FileBuilder.build_cfg_file_encaminamiento_1(i, my_lambdas[i], S)
