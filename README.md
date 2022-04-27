@@ -16,8 +16,7 @@ Ambos parámetros son obligatorios
 ## Directorios
 - `input_cfg`: contiene los ficheros de entrada para el simulador SimRedMMkk acorde a los parámetros del enunciado del proyecto 21/22
 - `output_cfg`: almecanará los ficheros de salida devueltos por el simulador a partir de los ficheros de entrada del directorio anterior
-- `gnuplot_cfg`: almacenará los ficheros con los datos a graficar por gnuplot
-En caso de ordenar simular una misma configuración, los ficheros correspondientes serán sobreescritos
+- `gnuplot_cfg`: almacenará los ficheros con los datos a graficar por gnuplot. En caso de ordenar simular una misma configuración, los ficheros correspondientes serán sobreescritos
 - `gnuplot_scripts`: almacenará los ficheros .gnuplot que contienen las instrucciones para mostrar por pantalla las gráficas
 
 ## Scripts
@@ -28,7 +27,7 @@ chmod +x clean_cfg_files.sh
 ./clean_cfg_files.sh
 ~~~
 
-- `plot_routing.sh`: script para graficar los datos obtenidos con la herramienta Gnuplot. Las gráficas serán aquellas indicadas en los ficheros `plot_encX.gnuplot` en el directorio raíz del proyecto. 
+- `plot_routing.sh`: script para graficar los datos obtenidos con la herramienta Gnuplot. Las gráficas serán aquellas indicadas en los ficheros `plot_encX.gnuplot` en el directorio `gnuplot_scripts`. 
 Funcionamiento:
 ~~~
 chmod +x plot_routing.sh
