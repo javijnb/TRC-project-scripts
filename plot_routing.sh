@@ -1,17 +1,41 @@
 #!/bin/bash
+echo "------------------------------------------------------------------------------"
+echo "-                              GRAFICAS BÁSICAS                              -"
+echo "------------------------------------------------------------------------------"
+echo ""
+echo "1) ENC I - Tráficos simples y duales. Tráfico total ofrecido vs cursado"
+echo "2) ENC II - Tráficos simples y duales. Tráfico total ofrecido vs cursado"
+echo "3) ENC III - - Tráficos simples y duales. Tráfico total ofrecido vs cursado"
+echo "4) ENC III con reserva de 2 circuitos - Tráficos simples y duales. Tráfico total ofrecido vs cursado"
+echo ""
+echo "------------------------------------------------------------------------------"
+echo "-                            GRAFICAS ALTERNATIVAS                           -"
+echo "------------------------------------------------------------------------------"
+echo ""
+echo "5) ENC I - Tráfico teórico vs tráfico simulado"
+echo "6) ENC III - Simulación sin reserva vs simulación con reserva"
+echo -n "Introduzca el número de la opción que desea: "
+read VAR
 
-if [[ $1 -eq 1 ]]
+if [[ $VAR -eq 1 ]]
 then
     gnuplot ./gnuplot_scripts/plot_enc1.gnuplot
-elif [[ $1 -eq 2 ]]
-then 
-    gnuplot ./gnuplot_scripts/plot_enc2.gnuplot
-elif [[ $1 -eq 3 ]]
+elif [[ $VAR -eq 2 ]]
+then
+   gnuplot ./gnuplot_scripts/plot_enc2.gnuplot
+elif [[ $VAR -eq 3 ]]
 then
     gnuplot ./gnuplot_scripts/plot_enc3.gnuplot
-elif [[ $1 -eq 4 ]]
+elif [[ $VAR -eq 4 ]]
 then
     gnuplot ./gnuplot_scripts/plot_enc3_backup.gnuplot
+elif [[ $VAR -eq 5 ]]
+then
+    echo "Ha seleccionado teorico vs simulado"
+elif [[ $VAR -eq 6 ]]
+then
+    echo "Ha seleccionado sin reserva vs reserva"
 else
-    echo "Encaminamiento elegido no válido"
+    echo "No ha seleccionado una opción disponible"
 fi
+
