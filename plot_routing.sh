@@ -35,7 +35,7 @@ then
     gnuplot ./gnuplot_scripts/plot_enc1_theoric_vs_simulation.gnuplot
 elif [[ $VAR -eq 6 ]]
 then
-    echo "Ha seleccionado sin reserva vs reserva"
+    gnuplot ./gnuplot_scripts/plot_enc3_vs_backup.gnuplot
 else
     echo "No ha seleccionado una opción disponible"
 fi
