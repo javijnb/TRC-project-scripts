@@ -31,5 +31,6 @@ chmod +x clean_cfg_files.sh
 Funcionamiento:
 ~~~
 chmod +x plot_routing.sh
-./plot_routing.sh [número de encaminamiento]
+./plot_routing.sh
 ~~~
+Tras se ejecución, se abrirá un menú de opciones a elegir.
