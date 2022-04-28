@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "------------------------------------------------------------------------------"
-echo "-                              GRAFICAS BÁSICAS                              -"
+echo "-                              GRÁFICAS BÁSICAS                              -"
 echo "------------------------------------------------------------------------------"
 echo ""
 echo "1) ENC I - Tráficos simples y duales. Tráfico total ofrecido vs cursado"
@@ -9,11 +9,12 @@ echo "3) ENC III - - Tráficos simples y duales. Tráfico total ofrecido vs curs
 echo "4) ENC III con reserva de 2 circuitos - Tráficos simples y duales. Tráfico total ofrecido vs cursado"
 echo ""
 echo "------------------------------------------------------------------------------"
-echo "-                            GRAFICAS ALTERNATIVAS                           -"
+echo "-                            GRÁFICAS ALTERNATIVAS                           -"
 echo "------------------------------------------------------------------------------"
 echo ""
 echo "5) ENC I - Tráfico teórico vs tráfico simulado"
 echo "6) ENC III - Simulación sin reserva vs simulación con reserva"
+echo ""
 echo -n "Introduzca el número de la opción que desea: "
 read VAR
 
@@ -31,7 +32,7 @@ then
     gnuplot ./gnuplot_scripts/plot_enc3_backup.gnuplot
 elif [[ $VAR -eq 5 ]]
 then
-    echo "Ha seleccionado teorico vs simulado"
+    gnuplot ./gnuplot_scripts/plot_enc1_theoric_vs_simulation.gnuplot
 elif [[ $VAR -eq 6 ]]
 then
     echo "Ha seleccionado sin reserva vs reserva"
