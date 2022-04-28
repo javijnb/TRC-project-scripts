@@ -33,4 +33,4 @@ Funcionamiento:
 chmod +x plot_routing.sh
 ./plot_routing.sh
 ~~~
-Tras se ejecución, se abrirá un menú de opciones a elegir.
+Tras su ejecución, se abrirá un menú de opciones a elegir.
