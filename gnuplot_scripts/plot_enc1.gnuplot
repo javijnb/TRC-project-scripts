@@ -1,7 +1,7 @@
 set xlabel 'Trafico ofrecido'
 set ylabel 'Trafico cursado'
 set key bottom right
-set title 'Trafico ofrecido vs cursado'
+set title 'Trafico ofrecido vs cursado - ENC I'
 
 # intervalos
 set xrange [19:26]
@@ -11,8 +11,5 @@ pause 7
 # grafica general
 set xrange [39:51]
 plot 'gnuplot_files/data_enc1.plot' with yerrorlines title 'Trafico total con estimación'
-
-# depurar puntos
-# plot 'gnuplot_files/data_enc1.plot' with labels
 
 pause -1
