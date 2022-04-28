@@ -13,8 +13,6 @@ A = []
 
 def main(numero_encaminamiento: int, seed: int):
 
-    print(range(1,3))
-
     # COMPROBAR NUMERO DE ENCAMINAMIENTO VALIDO:
     is_between = numero_encaminamiento in range(1,5)
     if not is_between:
