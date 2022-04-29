@@ -12,7 +12,7 @@ echo "--------------------------------------------------------------------------
 echo "-                            GRÁFICAS ALTERNATIVAS                           -"
 echo "------------------------------------------------------------------------------"
 echo ""
-echo "5) ENC I - Tráfico teórico vs tráfico simulado"
+echo "5) ENC I - Tráfico teórico vs tráfico simulado para tráficos de primer y segundo salto"
 echo "6) ENC III - Simulación sin reserva vs simulación con reserva"
 echo ""
 echo -n "Introduzca el número de la opción que desea: "
