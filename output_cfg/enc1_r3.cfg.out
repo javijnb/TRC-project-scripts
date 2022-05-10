@@ -1,31 +1,31 @@
-Semilla: 9
-Tolerancia relativa: 0.017977
+Semilla: 0
+Tolerancia relativa: 0.00339566
 
 Trafico/s promediado/s en a:
-Probabilidad de bloqueo estimada: 0.037763
-	Confidence interval 1: (0.0371733,0.0383528) with coverage: 0.95
-	Confidence interval 2: (0.0370842,0.0384419) with coverage: 0.975115
-	Number of samples: 1965150
-	Variance: 0.036337
-	Standard deviation: 0.190623
+Probabilidad de bloqueo estimada: 0.192869
+	Confidence interval 1: (0.192294,0.193444) with coverage: 0.95
+	Confidence interval 2: (0.192214,0.193524) with coverage: 0.973192
+	Number of samples: 4423680
+	Variance: 0.15567
+	Standard deviation: 0.394551
 	Maximum sample: 1
 	Minimum sample: 0
 
 Trafico/s promediado/s en b:
-Probabilidad de bloqueo estimada: 0.0733622
-	Confidence interval 1: (0.0722482,0.0744762) with coverage: 0.95
-	Confidence interval 2: (0.0720434,0.0746811) with coverage: 0.978347
-	Number of samples: 983040
-	Variance: 0.0679803
-	Standard deviation: 0.26073
+Probabilidad de bloqueo estimada: 0.345777
+	Confidence interval 1: (0.344834,0.346719) with coverage: 0.95
+	Confidence interval 2: (0.344603,0.346951) with coverage: 0.983963
+	Number of samples: 2213286
+	Variance: 0.226215
+	Standard deviation: 0.475621
 	Maximum sample: 1
 	Minimum sample: 0
 
-0.0496332
-	Confidence interval 1: (0.0488379,0.0504284) with coverage: 0.95
-	Confidence interval 2: (0.0487409,0.0505254) with coverage: 0.971057
-	Number of samples: 2948190
-	Variance: 0.0471697
-	Standard deviation: 0.217186
+0.24386
+	Confidence interval 1: (0.243228,0.244493) with coverage: 0.95
+	Confidence interval 2: (0.243032,0.244688) with coverage: 0.988321
+	Number of samples: 6636966
+	Variance: 0.184393
+	Standard deviation: 0.42941
 	Maximum sample: 1
 	Minimum sample: 0
