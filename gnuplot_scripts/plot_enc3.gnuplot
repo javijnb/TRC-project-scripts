@@ -4,7 +4,7 @@ set key bottom right
 set title 'Tráfico ofrecido vs cursado - ENC III'
 
 # intervalos
-plot 'gnuplot_files/data_enc3_trafA.plot' with yerrorlines title 'Tráfico simple con estimación', 'gnuplot_files/data_enc3_trafB.plot' with yerrorlines title 'Tráfico dual con estimación'
+plot 'gnuplot_files/data_enc3_trafA.plot' with yerrorlines title 'Tráfico de 1 salto con estimación', 'gnuplot_files/data_enc3_trafB.plot' with yerrorlines title 'Tráfico de 2 saltos con estimación'
 pause 7
 
 # grafica general
